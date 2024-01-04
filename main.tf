@@ -68,13 +68,6 @@ resource "railway_variable" "coder_agent_token" {
 	value = coder_agent.main.token
 }
 
-resource "railway_variable" "user" {
-  service_id = railway_service.workspace.id
-  environment_id = railway_project.coder_workspace.default_environment.id
-  name = "CODER_USER"
-  value = local.username
-}
-
 module "code-server" {
   source = "https://registry.coder.com/modules/code-server"
   agent_id = coder_agent.main.id
