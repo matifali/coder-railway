@@ -51,9 +51,8 @@ resource "railway_service" "workspace" {
   count          = data.coder_workspace.me.start_count
   name           = "coder-${data.coder_workspace.me.owner}-${data.coder_workspace.me.name}"
   project_id     = railway_project.coder_workspace.id
-  source_repo    = "matifali/coder-railway"
+  source_repo    = "https://github.com/matifali/coder-railway"
   root_directory = "build"
-  config_path    = "railway.json"
 }
 
 resource "railway_variable" "coder_agent_init_script" {
