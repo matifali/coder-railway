@@ -1,5 +1,2 @@
-[build]
-builder = "Dockerfile"
-
 [deploy]
 startCommand = "echo ${CODER_AGENT_INIT_SCRIPT} | base64 -d | sh"

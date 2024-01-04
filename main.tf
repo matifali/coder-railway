@@ -52,7 +52,7 @@ resource "railway_service" "workspace" {
   name         = "coder-${data.coder_workspace.me.owner}-${data.coder_workspace.me.name}"
   project_id   = railway_project.coder_workspace.id
   source_image = "codercom/enterprise-base:ubuntu"
-  config_path  = "railway.json"
+  config_path  = "railway.toml"
 }
 
 resource "railway_variable" "coder_agent_init_script" {
