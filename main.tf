@@ -48,6 +48,7 @@ resource "railway_project" "coder_workspace" {
 }
 
 resource "railway_service" "workspace" {
+  count = data.coder_workspace.me.start_count
 	name = "coder-${data.coder_workspace.me.owner}-${data.coder_workspace.me.name}"
 	project_id = railway_project.coder_workspace.id
 	source_repo = "matifali/coder-railway"
