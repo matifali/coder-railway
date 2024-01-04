@@ -56,14 +56,16 @@ resource "railway_service" "workspace" {
 }
 
 resource "railway_variable" "coder_agent_init_script" {
-	service_id = railway_service.workspace.id
+  count = data.coder_workspace.me.start_count
+	service_id = railway_service.workspace[0].id
 	environment_id = railway_project.coder_workspace.default_environment.id
 	name = "CODER_AGENT_INIT_SCRIPT"
 	value = base64encode(coder_agent.main.init_script)
 }
 
 resource "railway_variable" "coder_agent_token" {
-	service_id = railway_service.workspace.id
+  count = data.coder_workspace.me.start_count
+	service_id = railway_service.workspace[0].id
 	environment_id = railway_project.coder_workspace.default_environment.id
 	name = "CODER_AGENT_TOKEN"
 	value = coder_agent.main.token
